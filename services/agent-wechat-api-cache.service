@@ -1,0 +1,17 @@
+[Unit]
+Description=Agent WeChat local API cache proxy
+After=network-online.target docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+Environment=AGENT_WECHAT_UPSTREAM_URL=http://127.0.0.1:6174
+Environment=AGENT_WECHAT_CACHE_BIND=127.0.0.1
+Environment=AGENT_WECHAT_CACHE_PORT=6175
+EnvironmentFile=-/etc/openclaw-wechat-channel.env
+ExecStart=/usr/local/bin/agent-wechat-api-cache.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

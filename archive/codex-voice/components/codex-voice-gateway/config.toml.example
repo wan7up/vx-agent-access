@@ -1,0 +1,8 @@
+# Dedicated configuration for Voice. Do not merge a custom provider config.
+cli_auth_credentials_store = "file"
+model_provider = "openai"
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+
+[features]
+realtime_conversation = true

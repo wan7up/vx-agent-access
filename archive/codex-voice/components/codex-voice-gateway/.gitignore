@@ -1,0 +1,6 @@
+node_modules/
+dist/
+public/app.js
+.env
+var/
+*.log

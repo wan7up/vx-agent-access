@@ -1,0 +1,9 @@
+**
+!Dockerfile
+!entrypoint.sh
+!launch-wechat.sh
+!enter-session.py
+!a11y-dump-wrapper.py
+!Dockerfile.server
+!agent-server.release
+!.dockerignore

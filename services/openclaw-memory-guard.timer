@@ -1,0 +1,11 @@
+[Unit]
+Description=Check OpenClaw Gateway memory every five minutes
+
+[Timer]
+OnBootSec=10min
+OnUnitActiveSec=5min
+AccuracySec=30s
+Unit=openclaw-memory-guard.service
+
+[Install]
+WantedBy=timers.target

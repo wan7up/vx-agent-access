@@ -1,0 +1,22 @@
+services:
+  agent-wechat:
+    image: ${AGENT_WECHAT_IMAGE:-ghcr.io/thisnick/agent-wechat:latest}
+    container_name: agent-wechat
+    security_opt:
+      - seccomp=unconfined
+    cap_add:
+      - SYS_PTRACE
+      - NET_ADMIN
+    ulimits:
+      core: 0
+    ports:
+      - "127.0.0.1:${AGENT_WECHAT_PORT:-6174}:6174"
+    volumes:
+      - agent-wechat-data:/data
+      - agent-wechat-home:/home/wechat
+      - ${AGENT_WECHAT_TOKEN_FILE:-./secrets/token}:/data/auth-token:ro
+    restart: unless-stopped
+
+volumes:
+  agent-wechat-data:
+  agent-wechat-home:

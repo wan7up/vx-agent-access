@@ -1,0 +1,19 @@
+[Unit]
+Description=Agent WeChat incoming call to Codex Voice observer
+After=docker.service codex-voice-gateway.service
+Wants=codex-voice-gateway.service
+Requires=docker.service
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/openclaw-wechat-channel.env
+ExecStart=/usr/local/bin/agent-wechat-incoming-call.py
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/run/lock /var/lib/wechat-gpt-voice-bridge
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,52 @@
+# Local upstream reference clone. Keep it out of this project repo unless it is
+# deliberately converted to a submodule or vendored fork later.
+agent-wechat-src/
+
+# One-off screenshots and local scratch files.
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.log
+__pycache__/
+*.pyc
+
+# Private production notes and runtime data.
+.private/
+archive/codex-voice/private/
+archive/codex-voice/versions/
+docs/private/
+docs/versions/
+docs/166-codex-voice-runtime.md
+*.sqlite
+*.sqlite3
+*.db
+*.env
+*.secret
+*.token
+secrets/
+auth.json
+device.json
+*.bundle
+*.tar
+*.tar.gz
+*.zip
+*.bak
+*.key
+*.pem
+agent-server.release
+*.wav
+*.mp3
+*.pcm
+
+# Regenerable dependencies and build output.
+node_modules/
+dist/
+.venv/
+
+# Temporary rollout helpers created during live operations.
+repair_wechat_media_patch.py
+patch_wechat_media_normalize.py
+inventory_stable_version.py
+cleanup_stable_version_temp.py
+agent_wechat_media_normalize.py

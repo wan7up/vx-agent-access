@@ -1,0 +1,27 @@
+{
+  "channels": {
+    "wechat": {
+      "enabled": true,
+      "serverUrl": "http://127.0.0.1:6175",
+      "token": "READ_FROM_YOUR_SECRET_STORE_OR_TOKEN_FILE",
+      "dmPolicy": "allowlist",
+      "allowFrom": [
+        "your_dm_chat_id"
+      ],
+      "groupPolicy": "allowlist",
+      "groups": {
+        "*": {
+          "enabled": false,
+          "requireMention": true
+        },
+        "your_group_id@chatroom": {
+          "enabled": true,
+          "requireMention": true,
+          "groupPolicy": "allowlist"
+        }
+      },
+      "pollIntervalMs": 15000,
+      "authPollIntervalMs": 120000
+    }
+  }
+}

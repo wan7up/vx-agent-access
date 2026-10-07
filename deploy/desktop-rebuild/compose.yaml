@@ -1,0 +1,38 @@
+services:
+  agent-wechat:
+    image: ${DESKTOP_IMAGE:?Set a locally built compatible desktop image}
+    container_name: agent-wechat
+    init: true
+    restart: unless-stopped
+    mem_limit: 1g
+    cpus: 2
+    shm_size: 128m
+    tmpfs:
+      - /run/user/1000:uid=1000,gid=1000,mode=0700,size=32m
+    environment:
+      ENABLE_VNC: "${ENABLE_VNC:-0}"
+    ulimits:
+      core: 0
+    security_opt:
+      - seccomp=unconfined
+    cap_add:
+      - SYS_PTRACE
+    ports:
+      - "127.0.0.1:${AGENT_WECHAT_PORT:-6274}:6174"
+    volumes:
+      - desktop-data:/data
+      - desktop-home:/home/wechat
+      - ${DESKTOP_TOKEN_FILE:?Set your private absolute token file path}:/data/auth-token:ro
+
+volumes:
+  desktop-data:
+    external: true
+    name: ${DESKTOP_DATA_VOLUME:?Set your matching desktop data volume}
+  desktop-home:
+    external: true
+    name: ${DESKTOP_HOME_VOLUME:?Set your matching desktop home volume}
+
+networks:
+  default:
+    external: true
+    name: ${DESKTOP_NETWORK:?Set your desktop network}

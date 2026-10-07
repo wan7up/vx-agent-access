@@ -1,0 +1,20 @@
+[Unit]
+Description=Xiaozhi virtual device activation for vx voice bridge
+After=network-online.target hermes-openwrt-route.service
+Wants=network-online.target
+Requires=hermes-openwrt-route.service
+
+[Service]
+Type=simple
+User=xiaozhi-voice
+Group=xiaozhi-voice
+WorkingDirectory=/opt/xiaozhi-vx-bridge
+ExecStart=/usr/bin/python3 /opt/xiaozhi-vx-bridge/device.py activate --wait 900
+Restart=no
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/xiaozhi-vx-bridge
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+

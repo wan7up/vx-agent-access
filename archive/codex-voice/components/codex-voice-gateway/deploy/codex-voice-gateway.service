@@ -1,0 +1,30 @@
+[Unit]
+Description=Private Codex Voice Gateway
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=codex-voice
+Group=codex-voice
+WorkingDirectory=/opt/codex-voice/gateway
+Environment=HOME=/var/lib/codex-voice-gateway
+EnvironmentFile=/etc/codex-voice-gateway.env
+ExecStart=/usr/bin/node /opt/codex-voice/gateway/dist/index.js
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=20
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+ReadWritePaths=/var/lib/codex-voice-gateway
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+LockPersonality=true
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

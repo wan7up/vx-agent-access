@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#16231f">
+    <title>Codex Voice</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">PRIVATE CODEX VOICE</p>
+          <h1>语音 Agent</h1>
+        </div>
+        <output id="status" class="status" aria-live="polite">未连接</output>
+      </header>
+
+      <section class="conversation" aria-label="对话记录">
+        <div id="transcript" class="transcript" aria-live="polite">
+          <p class="empty-state">点击开始后，直接说话即可。</p>
+        </div>
+      </section>
+
+      <section id="approvals" class="approvals" aria-label="待确认操作" hidden></section>
+
+      <form id="text-form" class="text-form">
+        <label class="sr-only" for="text-input">发送文字</label>
+        <input id="text-input" autocomplete="off" placeholder="输入补充内容" disabled>
+        <button id="send" type="submit" disabled>发送</button>
+      </form>
+
+      <nav class="controls" aria-label="语音控制">
+        <button id="start" type="button">开始</button>
+        <button id="mute" type="button" disabled>静音</button>
+        <button id="interrupt" type="button" disabled>打断</button>
+        <button id="stop" type="button" disabled>结束</button>
+      </nav>
+    </main>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

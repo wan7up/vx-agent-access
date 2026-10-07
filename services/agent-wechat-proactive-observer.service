@@ -1,0 +1,15 @@
+[Unit]
+Description=Agent WeChat proactive group observer
+After=network-online.target docker.service openclaw-gateway.service agent-wechat-api-cache.service
+Wants=agent-wechat-api-cache.service
+Requires=docker.service
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/openclaw-wechat-channel.env
+ExecStart=/usr/local/bin/agent-wechat-proactive-observer.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

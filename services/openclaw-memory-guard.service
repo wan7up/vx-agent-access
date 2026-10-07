@@ -1,0 +1,7 @@
+[Unit]
+Description=Restart OpenClaw Gateway after sustained memory pressure
+After=openclaw-gateway.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/openclaw-memory-guard.py
